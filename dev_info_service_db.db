@@ -1,0 +1,104 @@
+/******************************************************************************
+ *  Copyright Cambridge Silicon Radio Limited 2012-2014
+ *  Part of CSR uEnergy SDK 2.3.0
+ *  Application version 2.3.0.0
+ *
+ *  FILE
+ *      dev_info_service_db.db
+ *
+ *  DESCRIPTION
+ *      This file defines the Device Information Service in JSON format.
+ *      This file is included in the main application data base file 
+ *      which is used to produce ATT flat data base.
+ *
+ *****************************************************************************/
+#ifndef __DEV_INFO_SERVICE_DB__
+#define __DEV_INFO_SERVICE_DB__
+#include "dev_info_uuids.h"
+
+/* For service details, refer http://developer.bluetooth.org/gatt/services/
+ * Pages/ServiceViewer.aspx?u=org.bluetooth.service.device_information.xml
+ */
+
+
+/* Primary service declaration of Device Information service */
+primary_service {
+    uuid : UUID_DEVICE_INFO_SERVICE,
+    name : "DEVICE_INFO_SERVICE",
+    
+
+    /* Serial number characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_SERIAL_NUMBER,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_SERIAL_NUMBER",
+        value : "BLE-THERMOMETER-001"
+    },
+
+    /* Model number string characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_MODEL_NUMBER,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_MODEL_NUMBER",
+        value : "BLE-THERMOMETER-MODEL-001"      
+    },
+
+    /* System Id characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_SYSTEM_ID,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_SYSTEM_ID",
+        size_value : 0x8       
+    },
+    
+    /* Hardware revision characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_HARDWARE_REVISION,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_HARDWARE_REVISION",
+        value : HARDWARE_REVISION
+    },
+    
+    /* Firmware revision characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_FIRMWARE_REVISION,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_FIRMWARE_REVISION",
+        value : "CSR uEnergy SDK 2.3.0"
+    },
+    
+    /* Software revision characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_SOFTWARE_REVISION,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_SOFTWARE_REVISION",
+        value : "Application version 2.3.0.0"
+    },
+    
+    /* Manufacturer name characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_MANUFACTURER_NAME,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_MANUFACTURER_NAME",
+        value : "Cambridge Silicon Radio"
+    },
+    
+    /* PNP ID characteristic */
+    characteristic {
+        uuid : UUID_DEVICE_INFO_PNP_ID,
+        properties : read,
+        name : "DEVICE_INFO_PNP_ID",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        value : [VENDOR_ID_SRC_BT, VENDOR_ID,
+                 PRODUCT_ID,
+                 PRODUCT_VER]
+    }
+}
+#endif /* __DEV_INFO_SERVICE_DB__*/

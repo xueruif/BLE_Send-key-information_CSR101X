@@ -1,0 +1,7 @@
+-MD
+-I.
+-Idepend_Release_CSR101x_A05
+-ID:/CSR/CSR_uEnergy_SDK-2.3.0.31/tools/include/CSR101x_A05
+-DCSR101x
+-DCSR101x_A05
+-DNVM_TYPE_EEPROM

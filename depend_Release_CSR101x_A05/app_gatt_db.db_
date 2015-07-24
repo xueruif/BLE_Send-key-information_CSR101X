@@ -1,0 +1,239 @@
+# 1 "app_gatt_db.db"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "app_gatt_db.db"
+# 16 "app_gatt_db.db"
+# 1 "gap_service_db.db" 1
+# 18 "gap_service_db.db"
+# 1 "gap_uuids.h" 1
+# 19 "gap_service_db.db" 2
+# 1 "appearance.h" 1
+# 20 "gap_service_db.db" 2
+# 1 "gap_conn_params.h" 1
+# 21 "gap_service_db.db" 2
+
+
+
+
+
+
+primary_service {
+    uuid : 0x1800,
+    name : "GAP_SERVICE",
+# 38 "gap_service_db.db"
+    characteristic {
+        uuid : 0x2A00,
+        name : "DEVICE_NAME",
+        properties : [read, write],
+        flags : [FLAG_IRQ, FLAG_ENCR_W],
+
+
+
+
+        value : 0x00
+    },
+
+
+    characteristic {
+        uuid : 0x2A01,
+        name : "DEVICE_APPEARANCE",
+        flags : FLAG_IRQ,
+        properties : read,
+        value : 0x0300
+    },
+
+
+    characteristic {
+        uuid : 0x2A04,
+        name : "DEVICE_PREF_CONN_PARAMS",
+        properties : read,
+        flags : FLAG_IRQ,
+        value : [0x001B, 0x001B,
+                 0x0004, 0x03e8]
+    }
+},
+# 17 "app_gatt_db.db" 2
+# 1 "gatt_service_db.db" 1
+# 18 "gatt_service_db.db"
+# 1 "gatt_service_uuids.h" 1
+# 19 "gatt_service_db.db" 2
+
+
+
+
+
+
+primary_service {
+    uuid : 0x1801,
+    name : "GATT_SERVICE"
+
+
+
+},
+# 18 "app_gatt_db.db" 2
+# 1 "health_thermo_service_db.db" 1
+# 18 "health_thermo_service_db.db"
+# 1 "health_thermo_uuids.h" 1
+# 19 "health_thermo_service_db.db" 2
+
+
+
+
+
+
+primary_service {
+    uuid : 0x1809,
+
+
+    name : "HEALTH_THERMOMETER_SERVICE",
+# 39 "health_thermo_service_db.db"
+    characteristic {
+        uuid : 0x2a1c,
+        name : "HT_TEMP_MEASUREMENT",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        properties :[read, notify],
+        value : 0x00,
+
+        client_config {
+            flags : [FLAG_IRQ, FLAG_ENCR_W],
+            name : "HT_TEMP_MEAS_C_CFG"
+        }
+
+    },
+
+
+
+
+
+
+    characteristic {
+        uuid : 0x2a1d,
+        properties: read,
+        name : "HT_TEMP_TYPE",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        value : 0x02
+
+    }
+
+},
+# 19 "app_gatt_db.db" 2
+# 1 "battery_service_db.db" 1
+# 18 "battery_service_db.db"
+# 1 "battery_uuids.h" 1
+# 19 "battery_service_db.db" 2
+
+
+
+
+
+
+primary_service {
+    uuid : 0x180f,
+    name : "BATTERY_SERVICE",
+# 36 "battery_service_db.db"
+    characteristic {
+        uuid : 0x2a19,
+        name : "BATT_LEVEL",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        properties : [read, notify],
+        value : 0x00,
+
+        client_config {
+            flags : [FLAG_IRQ, FLAG_ENCR_W],
+            name : "BATT_LEVEL_C_CFG"
+        }
+
+    }
+},
+# 20 "app_gatt_db.db" 2
+# 1 "dev_info_service_db.db" 1
+# 17 "dev_info_service_db.db"
+# 1 "dev_info_uuids.h" 1
+# 18 "dev_info_service_db.db" 2
+
+
+
+
+
+
+
+primary_service {
+    uuid : 0x180A,
+    name : "DEVICE_INFO_SERVICE",
+
+
+
+    characteristic {
+        uuid : 0x2A25,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_SERIAL_NUMBER",
+        value : "BLE-THERMOMETER-001"
+    },
+
+
+    characteristic {
+        uuid : 0x2A24,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_MODEL_NUMBER",
+        value : "BLE-THERMOMETER-MODEL-001"
+    },
+
+
+    characteristic {
+        uuid : 0x2A23,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_SYSTEM_ID",
+        size_value : 0x8
+    },
+
+
+    characteristic {
+        uuid : 0x2A27,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_HARDWARE_REVISION",
+        value : "CSR101x A05"
+    },
+
+
+    characteristic {
+        uuid : 0x2A26,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_FIRMWARE_REVISION",
+        value : "CSR uEnergy SDK 2.3.0"
+    },
+
+
+    characteristic {
+        uuid : 0x2A28,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_SOFTWARE_REVISION",
+        value : "Application version 2.3.0.0"
+    },
+
+
+    characteristic {
+        uuid : 0x2A29,
+        properties : read,
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        name : "DEVICE_INFO_MANUFACTURER_NAME",
+        value : "Cambridge Silicon Radio"
+    },
+
+
+    characteristic {
+        uuid : 0x2A50,
+        properties : read,
+        name : "DEVICE_INFO_PNP_ID",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        value : [0x01, 0x000A,
+                 0x014C,
+                 0x0100]
+    }
+}
+# 21 "app_gatt_db.db" 2

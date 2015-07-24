@@ -1,0 +1,68 @@
+/******************************************************************************
+ *  Copyright Cambridge Silicon Radio Limited 2012-2014
+ *  Part of CSR uEnergy SDK 2.3.0
+ *  Application version 2.3.0.0
+ *
+ *  FILE
+ *      health_thermo_service_db.db
+ *
+ *  DESCRIPTION
+ *      This file defines the Health Thermometer Service in JSON format. 
+ *      This file is included in the main application data base file 
+ *      which is used to produce ATT flat data base.
+ *
+ *****************************************************************************/
+#ifndef __HEALTH_THERMO_SERVICE_DB__
+#define __HEALTH_THERMO_SERVICE_DB__
+
+#include "health_thermo_uuids.h"
+
+/* For service details, refer http://developer.bluetooth.org/gatt/services/
+ * Pages/ServiceViewer.aspx?u=org.bluetooth.service.health_thermometer.xml
+ */
+
+/* Primary service declaration of Health Thermometer service */
+primary_service {
+    uuid : UUID_HEALTH_THERMOMETER_SERVICE,
+
+    /* Name will be used in handle name macro */
+    name : "HEALTH_THERMOMETER_SERVICE", 
+
+	/* Health temperature measurement characteristic */
+
+	/* HT Termperature Measurement characteristic supports IRQ flag, thereby 
+	 * indications of this characteristic are handled by application. Write
+	 * access to client configuration descriptor requires encryption to be 
+	 * enabled.
+	 */
+
+    characteristic {
+        uuid : UUID_HT_TEMPERATURE_MEAS,
+        name : "HT_TEMP_MEASUREMENT",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        properties :[read, notify],
+        value : 0x00,
+        
+        client_config {
+            flags : [FLAG_IRQ, FLAG_ENCR_W],
+            name : "HT_TEMP_MEAS_C_CFG"
+        }
+
+    },
+
+	/* Health temperature type characteristic */
+
+	/* Read of HT temperature type characteristic requires encryption to be 
+ 	 * enabled.
+ 	 */
+    characteristic {
+        uuid : UUID_HT_TEMPERATURE_TYPE,
+        properties: read,
+        name : "HT_TEMP_TYPE",
+        flags : [FLAG_IRQ, FLAG_ENCR_R],
+        value : HT_TEMP_TYPE_BODY
+
+    }
+
+},
+#endif /* __HEALTH_THERMO_SERVICE_DB__ */
